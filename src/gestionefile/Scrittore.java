@@ -19,6 +19,7 @@ public class Scrittore implements Runnable{
     public Scrittore(String nomeFile){
         this.nomeFile = nomeFile;
     }
+    //aggiungerer costruttore con 2 parametri testo
     
     @Override
     public void run() {
