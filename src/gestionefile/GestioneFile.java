@@ -2,7 +2,7 @@ package gestionefile;
 
 /**
  *
- * @author MC
+ * @author Damiano Pagliairni
  * @version 12/01/23
  */
 public class GestioneFile {
