@@ -3,7 +3,14 @@ package gestionefile;
 import java.io.Console;
 import java.util.Arrays;
 import java.io.IOException;
-import java.util.Scanner; 
+import java.util.Scanner;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
 /**
  *
  * @author Damiano Pagliairni
@@ -25,6 +32,15 @@ public class GestioneFile {
         t1.start();
         t2.start();
         t3.start();
+      try{
+        t.join();
+        t1.join();
+        t2.join();
+        t3.join();
+      }catch(InterruptedException ex){
+        
+      }
+     
         
       
         //1)LETTURA
@@ -41,11 +57,19 @@ public class GestioneFile {
         //3) SCRITTURA
         Scrittore scrittore = new Scrittore("output.csv", userNameC, passwordC);
       Scrittore copia = new Scrittore("copia.csv", userNameC, passwordC);
-      
+      Scrittore StreamCopia = new Scrittore("user.csv", userNameC, passwordC);
+      Thread threadStream = new Thread(StreamCopia);
+      threadStream.start();
+       final String dataFile = "user.csv";
+      DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream(dataFile))); 
+   DataOutputStream out = new DataOutputStream(new BufferedOutputStream(
+        new FileOutputStream(dataFile)));
+      out.writeUTF(dataFile);
         Thread threadScrittore = new Thread(scrittore);
         Thread threadCopia = new Thread(copia);
         threadCopia.start();
         threadScrittore.start();
+        
     }
 
 }

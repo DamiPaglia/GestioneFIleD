@@ -1,4 +1,5 @@
 package gestionefile;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class Scrittore implements Runnable {
   String username;
   String password;
   String fileCopia;
+
 
   public Scrittore(String nomeFile, String username, String password) {
     this.nomeFile = nomeFile;
@@ -42,6 +44,8 @@ public class Scrittore implements Runnable {
     } catch (IOException ex) {
       Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
     }
+
+   
 
   }
 
